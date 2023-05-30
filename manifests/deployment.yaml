@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pythondeploy
+  labels:
+    app: pythondeploy
+  namespace: pythonapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pythondeploy
+  template:
+    metadata:
+      labels:
+        app: pythondeploy
+    spec:
+      containers:
+        - name: pythondeploy
+          image: srinmanmsdn.azurecr.io/pythonapp:latest
+          ports:
+            - containerPort: 5000
